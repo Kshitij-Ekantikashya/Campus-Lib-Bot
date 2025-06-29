@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Campus Library Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        text-align: center;
+        margin: 0;
+        padding: 40px;
+      }
+      h1 {
+        color: #333;
+      }
+      df-messenger {
+        --df-messenger-bot-message: #e0e0e0;
+        --df-messenger-button-titlebar-color: #4285f4;
+        --df-messenger-chat-background-color: #ffffff;
+        --df-messenger-font-color: #000;
+        --df-messenger-send-icon: #4285f4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📚 Campus Library Chatbot</h1>
+    <p>Ask about book availability or reserve a study room.</p>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="CampusLibraryBot"
+      agent-id="61e7a5ee-aee0-4d70-b120-1bc0f1bca4b0"
+      language-code="en"
+    ></df-messenger>
+
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  </body>
+</html>
