@@ -2,38 +2,69 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Campus Library Bot</title>
+    <title>Campus Library Chatbot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
         font-family: Arial, sans-serif;
-        background: #f2f2f2;
-        text-align: center;
+        background: #f9f9f9;
+        color: #333;
         margin: 0;
-        padding: 40px;
+        padding: 30px;
+        line-height: 1.6;
       }
       h1 {
-        color: #333;
+        text-align: center;
       }
-      df-messenger {
-        --df-messenger-bot-message: #e0e0e0;
-        --df-messenger-button-titlebar-color: #4285f4;
-        --df-messenger-chat-background-color: #ffffff;
-        --df-messenger-font-color: #000;
-        --df-messenger-send-icon: #4285f4;
+      h2 {
+        margin-top: 40px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
       }
     </style>
   </head>
   <body>
-    <h1>📚 Campus Library Chatbot</h1>
-    <p>Ask about book availability or reserve a Reading Slot.</p>
+    <h1>Campus Library Info Chatbot</h1>
+    <p>This chatbot can help you with:</p>
+    <ul>
+      <li>Checking library opening hours</li>
+      <li>Looking up book availability</li>
+      <li>Reserving study slots</li>
+    </ul>
 
-    <df-messenger
-      intent="WELCOME"
-      chat-title="CampusLibraryBot"
-      agent-id="61e7a5ee-aee0-4d70-b120-1bc0f1bca4b0"
-      language-code="en"
-    ></df-messenger>
+    <h2>📚 Current Book Catalog</h2>
+    <p>The following books are available in the simulated catalog used by the chatbot:</p>
+    <ul>
+      <li>The Hobbit – Available</li>
+      <li>The Mocking Bird – Available</li>
+      <li>The Perks of Being a Wallflower – Available</li>
+      <li>The Paper Town – Checked Out</li>
+      <li>Da Vinci Code – Checked Out</li>
+    </ul>
+
+    <h2>Try Asking:</h2>
+    <ul>
+      <li>"What are your hours?"</li>
+      <li>"Do you have The Hobbit?"</li>
+      <li>"Reserve a study room for tomorrow at 3 PM for 2 hours"</li>
+    </ul>
+
+    <!-- Dialogflow Messenger -->
+    <div class="chatbot-container">
+      <df-messenger
+        intent="WELCOME"
+        chat-title="CampusLibraryBot"
+        agent-id="61e7a5ee-aee0-4d70-b120-1bc0f1bca4b0"
+        language-code="en"
+      ></df-messenger>
+    </div>
 
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
   </body>
