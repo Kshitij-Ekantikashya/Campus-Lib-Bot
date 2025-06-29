@@ -1,71 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Campus Library Chatbot</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f9f9f9;
-        color: #333;
-        margin: 0;
-        padding: 30px;
-        line-height: 1.6;
-      }
-      h1 {
-        text-align: center;
-      }
-      h2 {
-        margin-top: 40px;
-      }
-      ul {
-        padding-left: 20px;
-      }
-      .chatbot-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Campus Library Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Custom Fonts & Style -->
+  <style>
+    :root {
+      --primary-color: #1f1f1f;
+      --secondary-color: #2d2d2d;
+      --text-color: #f5f5f5;
+      --accent-color: #4fc3f7;
+    }
+
+    body {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--secondary-color);
+      padding: 2rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      border-left: 4px solid var(--accent-color);
+      padding-left: 10px;
+      color: var(--accent-color);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+
+    .try-box {
+      background-color: #333;
+      padding: 1rem;
+      border-left: 4px solid var(--accent-color);
+      margin-top: 1rem;
+      font-family: monospace;
+    }
+
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.85rem;
+      padding: 2rem 0;
+    }
+
+    /* Dialogflow widget container */
+    df-messenger {
+      --df-messenger-button-titlebar-color: #4fc3f7;
+      --df-messenger-chat-background-color: #121212;
+      --df-messenger-font-color: #fff;
+      --df-messenger-send-icon: #4fc3f7;
+    }
+
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
     <h1>Campus Library Info Chatbot</h1>
-    <p>This chatbot can help you with:</p>
-    <ul>
-      <li>Checking library opening hours</li>
-      <li>Looking up book availability</li>
-      <li>Reserving study slots</li>
-    </ul>
+  </header>
 
-    <h2>📚 Current Book Catalog</h2>
-    <p>The following books are available in the simulated catalog used by the chatbot:</p>
-    <ul>
-      <li>The Hobbit – Available</li>
-      <li>The Mocking Bird – Available</li>
-      <li>The Perks of Being a Wallflower – Available</li>
-      <li>The Paper Town – Checked Out</li>
-      <li>Da Vinci Code – Checked Out</li>
-    </ul>
+  <main>
+    <section>
+      <h2>What this bot can do</h2>
+      <ul>
+        <li>Provide library opening hours</li>
+        <li>Check book availability</li>
+        <li>Reserve study slots with date, time, and duration</li>
+      </ul>
+    </section>
 
-    <h2>Try Asking:</h2>
-    <ul>
-      <li>"What are your hours?"</li>
-      <li>"Do you have The Hobbit?"</li>
-      <li>"Reserve a study room for tomorrow at 3 PM for 2 hours"</li>
-    </ul>
+    <section>
+      <h2>Book Catalog</h2>
+      <p>The following books are available in the chatbot's simulated catalog:</p>
+      <ul>
+        <li>The Hobbit – Available</li>
+        <li>The Mocking Bird – Available</li>
+        <li>The Perks of Being a Wallflower – Available</li>
+        <li>The Paper Town – Checked Out</li>
+        <li>Da Vinci Code – Checked Out</li>
+      </ul>
+    </section>
 
-    <!-- Dialogflow Messenger -->
-    <div class="chatbot-container">
-      <df-messenger
-        intent="WELCOME"
-        chat-title="CampusLibraryBot"
-        agent-id="61e7a5ee-aee0-4d70-b120-1bc0f1bca4b0"
-        language-code="en"
-      ></df-messenger>
-    </div>
+    <section>
+      <h2>Try saying</h2>
+      <div class="try-box">
+        Do you have The Hobbit?<br />
+        Reserve a study slot for tomorrow at 3 PM for 2 hours<br />
+        What time does the library open?
+      </div>
+    </section>
+  </main>
 
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  </body>
+  <div class="chatbot-container">
+    <df-messenger
+      intent="WELCOME"
+      chat-title="CampusLibraryBot"
+      agent-id="61e7a5ee-aee0-4d70-b120-1bc0f1bca4b0"
+      language-code="en"
+    ></df-messenger>
+  </div>
+
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+  <footer>
+    Made with Dialogflow ES • No external APIs used • © 2025 Kshitij Ranjan
+  </footer>
+</body>
 </html>
